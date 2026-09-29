@@ -36,6 +36,28 @@ Push-Location frontend; npm run dev; Pop-Location
 
 Open <http://localhost:5173>. The page calls `GET http://localhost:8080/api/v1/health` and shows the backend connection state. The backend also exposes the safe operational check at <http://localhost:8080/actuator/health>.
 
+### Port overrides
+
+If port 8080 is already used by another local service, start the backend and frontend on the same alternate API port:
+
+```powershell
+$env:SERVER_PORT = "8081"
+$env:DB_URL = "jdbc:postgresql://localhost:5432/codeclassic"
+$env:DB_USERNAME = "codeclassic"
+$env:DB_PASSWORD = "<local-database-password>"
+$env:FRONTEND_URL = "http://localhost:5173"
+Push-Location backend; mvn spring-boot:run; Pop-Location
+```
+
+In a second terminal, configure Vite before starting it:
+
+```powershell
+$env:VITE_API_BASE_URL = "http://localhost:8081"
+Push-Location frontend; npm run dev; Pop-Location
+```
+
+Use the same port in the backend `SERVER_PORT` and frontend `VITE_API_BASE_URL`. The frontend and backend must also agree on the browser origin through `FRONTEND_URL` and CORS. Do not commit the local password or `.env`.
+
 ## Checks
 
 ```powershell
@@ -58,7 +80,7 @@ The named `postgres_data` volume persists local data. To intentionally delete lo
 
 - `DB_PASSWORD` is missing: copy `.env.example` to `.env` and set a local value.
 - PostgreSQL is not healthy: run `docker compose logs postgres` and check that port 5432 is available.
-- The frontend reports the backend is unavailable: confirm the backend is running on port 8080 and check its terminal output.
+- The frontend reports the backend is unavailable: confirm the backend is running on the port configured by `SERVER_PORT` and that `VITE_API_BASE_URL` points to the same port.
 - A port is busy: set `SERVER_PORT` or change the frontend Vite port, then update `VITE_API_BASE_URL` and `FRONTEND_URL` together.
 
 ## Repository layout
