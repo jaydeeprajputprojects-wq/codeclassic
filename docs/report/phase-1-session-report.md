@@ -2,8 +2,8 @@
 
 > **Report type:** Planned session roadmap and acceptance gates  
 > **Baseline source of truth:** [`brd-docs.md`](../initial-project-docs/brd-docs.md), [`tdd-docs.md`](../initial-project-docs/tdd-docs.md), and [`front-end-UI-design-doc.md`](../initial-project-docs/front-end-UI-design-doc.md). The [master execution plan](../initial-project-docs/master-execution-plan.md) sequences BRD Phase 1 into ten sessions.  
-> **Current implementation status:** No application implementation has been verified in this workspace. All ten sessions are therefore **Not Started**.  
-> **Last reviewed:** 2026-11-14  
+> **Current implementation status:** Session 1 setup/scaffolding has begun and is **In Progress**, supported by user-provided terminal output and the current Vite/React starter files. No Code Classic product features have been verified; Sessions 2–10 remain **Not Started**.  
+> **Last reviewed:** 2026-11-15  
 >
 > This report visualizes the planned Phase 1 work. It is not evidence that a session, feature, test, or deployment is complete. Update status only when repository evidence and the session's acceptance criteria support it.
 
@@ -29,7 +29,7 @@ The four phases above are the **development-series groupings** from the master e
 
 | Session | Execution phase | Planned milestone | Depends on | Status |
 |---|---|---|---|---|
-| 1 | Frontend foundation | Vite React application runs locally and is connected to GitHub | None | Not Started |
+| 1 | Frontend foundation | Vite React application runs locally and is connected to GitHub | None | In Progress |
 | 2 | Frontend foundation | Responsive shared layout, working routes, and Q&A Coming Soon placeholder | Session 1 | Not Started |
 | 3 | Frontend foundation | Responsive Code Classic homepage matches the approved visual baseline | Session 2 and UI specification | Not Started |
 | 4 | Frontend foundation | Visitors can browse blog listings and detail pages | Sessions 2–3 | Not Started |
@@ -73,7 +73,7 @@ The dependency arrows show the planned handoffs, not completed work. Sessions sh
 ### Session 1 — Development Environment and React Application
 
 **Execution phase:** Frontend foundation · **Target recording:** 20–25 minutes  
-**Status:** Not Started · **Depends on:** None
+**Status:** In Progress · **Depends on:** None
 
 **Goal:** Verify the development tools, create the Vite React JavaScript application, understand its generated structure, run it locally, and establish the first GitHub checkpoint.
 
@@ -90,6 +90,16 @@ flowchart LR
 
 **Expected handoff:** A locally running Vite/React application, a verified repository connection, and a first commit.  
 **Acceptance focus:** Tool versions/configuration are verified; the app starts in a browser; generated files are understood; the GitHub checkpoint succeeds without committing secrets. The shared navigation preserves Q&A as a Coming Soon placeholder only.
+
+**Progress evidence — user-provided terminal output (2026-11-15; not independently run by the report updater):**
+
+- Reported tool output: Node.js `v22.21.0` and npm `11.6.2`. The user's global Git configuration displayed the name Jaydeep Rajput; the global identity configuration alone does not establish a GitHub remote or completed checkpoint.
+- Reported scaffold activity: ran `npm create vite@latest . -- template react` in the existing, non-empty project directory; chose **Ignore files and continue** at the create-vite prompt, then selected React, JavaScript, and ESLint and installed dependencies. The scaffold process automatically started Vite at `http://localhost:5173`.
+- The user separately ran `npm run dev`, which reportedly printed the same URL. This records the dev server as reported running when that terminal output was captured; its current availability and browser rendering have not been independently checked.
+- Reported `npm run build` result: Vite `v8.3.8` completed successfully with 20 modules transformed. This is user-provided build evidence, not a build independently run for this update.
+- Current repository inspection is consistent with a Vite/React starter scaffold (`src/App.jsx`, `src/main.jsx`, Vite configuration and starter dependencies). The current app still displays the starter counter and Vite/React content; this is not evidence that any Code Classic feature is implemented.
+
+**Remaining Session 1 gate / evidence gaps:** No browser verification or screenshot, GitHub remote/repository connection, first Git commit/checkpoint, or evidence that the generated project structure has been reviewed was provided or verified. The reported tool output does not establish Visual Studio Code availability or a Git version. No lint, automated test, security, or feature acceptance checks are evidenced. Therefore Session 1 remains **In Progress**, not Accepted; only the setup/scaffold, dev-server invocation, and production-build portions have evidence. Do not infer completion of initial app features from the scaffold or build.
 
 ### Session 2 — Frontend Configuration and Common Layout
 
@@ -319,3 +329,4 @@ Never defer a security, privacy, or data-integrity issue as a conditional accept
 | 2026-11-14 | Created the initial visual roadmap from the 10-session master execution plan. All sessions are recorded as Not Started because no application implementation was verified. |
 | 2026-11-14 | Recorded the difference between the summed per-session duration and the master plan's approximate overall recording estimate. |
 | 2026-11-14 | Aligned Phase 1 report with the baseline BRD/TDD/UI decisions: verified-email access, password reset, confirmed admin deletion, Q&A Coming Soon only, and the master plan's Phase 1-only execution scope. |
+| 2026-11-15 | Updated Session 1 to In Progress based on user-provided terminal output for local tools, create-vite scaffolding in a non-empty directory (Ignore files and continue), dependency installation, Vite dev-server output at `http://localhost:5173`, and a successful production build. Distinguished those claims from inspected starter source and recorded the unverified browser, GitHub/checkpoint, and remaining acceptance evidence. No product-feature status or other session status was advanced. |

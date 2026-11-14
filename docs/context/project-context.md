@@ -27,18 +27,23 @@ Code Classic is a developer knowledge-sharing platform. Phase 1 is the public te
 
 ## Current repository and planning-document structure
 
-The requested `feature/project-setup` branch is checked out at commit `325bf62` (`Initial commit`). That commit tracks only `README.md`; the context, agent, and planning documents listed below are present locally but are not part of that branch's tracked initial commit.
+The initial starting-point scan was made on `feature/project-setup` at `325bf62`. The latest observed checkout is still on `feature/project-setup`, at `55f4cff`, tracking `origin/feature/project-setup`. The current workspace has additional modified and untracked files; see the workspace snapshot below. Do not treat the latest local files as committed merely because the branch tracks its remote.
 
 ```text
 code-classic/
 ├── .github/
 │   └── agents/
-│       ├── project-context-updater.agent.md  (local workspace agent)
-│       └── phase-1-report-updater.agent.md  (user-invocable session report agent)
+│       ├── project-context-updater.agent.md
+│       ├── phase-1-report-updater.agent.md
+│       └── project-learning-content.agent.md
 ├── docs/
 │   ├── context/
 │   │   ├── manuallchanges.md  (empty; owner-provided notes file)
 │   │   └── project-context.md  (local context guide)
+│   ├── learning/
+│   │   ├── README.md  (ten-session curriculum index)
+│   │   ├── theory/session-01 through session-10/
+│   │   └── que&ans/session-01 through session-10/
 │   ├── report/
 │   │   └── phase-1-session-report.md
 │   └── initial-project-docs/
@@ -49,7 +54,13 @@ code-classic/
 │       ├── master-execution-plan.md
 │       ├── CodeClassic_Intro.pptx
 │       └── CodeClassic_Execution_Plan.pptx
-└── README.md  (tracked on feature/project-setup)
+├── src/
+│   ├── App.jsx  (current Vite/React starter screen)
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx  (React entry point)
+├── package.json, package-lock.json, vite.config.js, eslint.config.js
+└── README.md
 ```
 
 The initial planning bundle is already present in `docs/initial-project-docs/`:
@@ -67,22 +78,26 @@ Keep the initial baseline section below intact. Update this current inventory as
 
 ## Current workspace and Git snapshot
 
-- The verified Git status for 2026-11-14 is: `README.md` modified; `.github/` and `docs/` untracked; no commit has been made. Verified with `git status --short --branch` on branch `feature/project-setup`.
+- Latest observed branch/commit: `feature/project-setup` at `55f4cff`, tracking `origin/feature/project-setup`.
+- The latest observed worktree is not clean: `README.md` is modified, and application scaffold files, `.github/`, and `docs/` contain untracked changes. A PowerPoint lock file is also untracked. These local changes are not included in the observed HEAD; preserve them and do not infer who created them from Git status alone.
 - The planning materials are aligned with the README and Phase 1 baseline: BRD, TDD, and Front-End UI Design Specification are the Phase 1 baseline/source of truth; the master execution plan sequences BRD Phase 1 only into 10 sessions grouped into four execution phases. The BRD separately defines three product phases.
 - The README, BRD, TDD, UI design specification, master execution plan, Phase 1 report, workspace updater agents, and both PowerPoint decks are recorded as updated/aligned in the 2026-11-14 work history. The UI sample remains a visual reference, not a functional-scope authority.
 - Both presentation files are present. The execution-plan presentation intentionally remains 53 slides covering Sessions 1–7; it is not to be extended to Sessions 8–10 unless requested.
-- The Phase 1 report still marks all ten sessions Not Started. No application source code, dependency manifests, tests, or build configuration have been verified in the workspace.
+- The Phase 1 report still marks all ten sessions Not Started; the starter scaffold does not establish that any Phase 1 feature milestone is complete.
+- The current app is a minimal Vite + React starter in `src/`. `package.json` lists React and React DOM and provides `dev`, `build`, `lint`, and `preview` scripts. The current package manifest does not include Bootstrap, React Router, or Firebase.
+- `eslint.config.js` configures recommended JavaScript checks, React Hooks rules, and React Refresh rules. The current starter is not yet the Code Classic product UI.
+- The learning library contains one theory guide and one Q&A guide for each of the ten roadmap sessions. Vue is labeled as an optional comparison, not a project dependency.
 
 ## Setup and live recreation guide
 
-The initial commit tracks only the product-description README. The current workspace also contains the local `.github/` and `docs/` materials described above, but no application code, dependency manifest, tests, or build configuration have been verified. The planning documents describe a 10-session build sequence, but no setup or implementation steps have been executed or verified in this workspace. As the application is built, document the actual sequence here so another person can reproduce it from a clean starting point:
+The initial commit tracks only the product-description README. The current workspace additionally contains the local planning materials and a Vite/React starter scaffold. The scaffold's original creation commands and Node.js version have not been independently recorded. As work continues, keep the actual sequence here so another person can reproduce it from a clean starting point:
 
-1. Prerequisites and supported tool/runtime versions:
-2. Create the project and install dependencies:
-3. Configure required environment variables or local services (never include secret values):
-4. Implement the major features in a logical, demonstrable order:
-5. Run the application:
-6. Verify expected behavior and run relevant tests:
+1. **Prerequisites:** Node.js and npm are needed to run the Vite scripts. Exact installed versions and supported minimum versions are not yet verified.
+2. **Project scaffold:** `package.json`, `package-lock.json`, `vite.config.js`, `eslint.config.js`, `index.html`, `public/`, and `src/` are present locally. The command originally used to create/install this scaffold has not been recorded.
+3. **Services and configuration:** Firebase is a planned Phase 1 dependency but is not configured in the current starter. Do not add secret values to source control or browser-exposed Vite variables.
+4. **Current implementation:** `src/main.jsx` mounts `src/App.jsx`; `App.jsx` is currently the Vite starter interface. Follow the ten-session master plan for the Code Classic implementation sequence.
+5. **Run locally:** `npm run dev` is the package script for Vite. Its current runtime URL has not been verified; use the URL Vite prints rather than assuming a port.
+6. **Current checks:** `npm run lint` and `npm run build` have passed. These checks do not prove product behavior, Firebase rules, or deployment.
 
 For each step, record the command or action, the relevant files, why the step is needed, and the expected observable result. Identify assumptions and unverified steps rather than presenting them as confirmed.
 
@@ -102,11 +117,14 @@ Before each update, check `docs/context/manuallchanges.md` for owner-performed w
 
 ## Verification status
 
-- Initial source/build/test status: not applicable; no project implementation or tooling configuration existed in the scanned workspace.
-- Clone verification: `feature/project-setup` is checked out at `325bf62` and tracks `origin/feature/project-setup`; the branch contains only `README.md`.
+- Initial source/build/test status: no app source or tooling configuration existed in the initial 2026-11-14 scan. This is a historical starting-point fact, not the current workspace state.
+- Latest checkout verification: `feature/project-setup` is at `55f4cff` and tracks `origin/feature/project-setup`; local changes remain outside that commit.
 - Planning bundle check: BRD, TDD, UI design spec, UI sample image, master execution-planning brief, and both requested PowerPoint files are present under `docs/initial-project-docs/`.
 - Presentation check: the introduction deck has 5 slides; the execution-plan deck has 53 slides and covers Sessions 1–7, intentionally ending there per the user's instruction. The decks were aligned to include verified-email access, password reset, confirmed administrator deletion, and the Q&A placeholder-only scope without adding sessions.
-- Build/test status on the cloned branch: not applicable; no application implementation, build configuration, or tests are present.
+- Current code validation: `npm run lint` passed and `npm run build` passed on the local Vite/React starter. No feature-level test suite has been verified.
+- Local server check: the owner reported localhost running, but HTTP checks could not connect at `localhost:5173`, `localhost:5174`, or other checked common ports. The running-server claim remains unverified; no dev server was started as part of this check.
+- Firebase, Bootstrap, React Router, Cloudflare Pages deployment, and production behavior remain unimplemented or unverified in the current starter.
+- Learning library check: ten theory directories and ten matching Q&A directories exist; each contains its session guide. Agent frontmatter and curriculum links should be checked when editing the learning library.
 - Record future verification with the exact command or action, outcome, and any limitations.
 
 ## Open questions and decisions
@@ -122,3 +140,5 @@ Record only questions or design decisions that affect understanding or reproduci
 - 2026-11-14: Aligned the README, Phase 1 planning baseline, visual report, and report agent around verified-email access, password reset, confirmed admin deletion, placeholder-only Q&A, and Phase 1-only session sequencing.
 - 2026-11-14: Updated the README, BRD, TDD, UI design specification, master execution plan, Phase 1 report, and existing presentations so they consistently reflect the Phase 1 source baseline. Kept the execution-plan presentation at Sessions 1–7.
 - 2026-11-14: Reconciled the canonical context with the aligned README, four written planning documents, UI reference, report, both workspace agents, and both decks. Reaffirmed the hierarchy (BRD/TDD/UI as Phase 1 baseline; master plan sequences BRD Phase 1 only in 10 sessions/four execution groupings; BRD has three product phases), required auth and confirmed-admin-delete scope, and Q&A placeholder-only scope. Recorded the user-reported Git status (README modified; `.github/` and `docs/` untracked; no commit); no implementation, manifests, tests, or build configuration were verified.
+- 2026-11-15: Updated the current workspace snapshot after discovering the local Vite/React starter and newer repository state. Recorded the observed HEAD/worktree, package scripts, lint/build results, localhost check limitation, and the distinction between the starter and completed Phase 1 milestones.
+- 2026-11-15: Added the user-invocable Project Learning Content agent and paired beginner-friendly theory/Q&A guides for all ten Phase 1 execution sessions. The guides use plain English with brief Hindi-friendly explanations and label Vue as an optional comparison outside the React baseline.
