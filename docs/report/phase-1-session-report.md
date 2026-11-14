@@ -2,7 +2,7 @@
 
 > **Report type:** Planned session roadmap and acceptance gates  
 > **Baseline source of truth:** [`brd-docs.md`](../initial-project-docs/brd-docs.md), [`tdd-docs.md`](../initial-project-docs/tdd-docs.md), and [`front-end-UI-design-doc.md`](../initial-project-docs/front-end-UI-design-doc.md). The [master execution plan](../initial-project-docs/master-execution-plan.md) sequences BRD Phase 1 into ten sessions.  
-> **Current implementation status:** Session 1 setup/scaffolding has begun and is **In Progress**, supported by user-provided terminal output and the current Vite/React starter files. No Code Classic product features have been verified; Sessions 2–10 remain **Not Started**.  
+> **Current implementation status:** Session 1 is **Accepted** based on the project owner's completion confirmation, supplied terminal output and GitHub screenshot, and the matching local branch/tracking refs recorded at that time. Session 2 shared layout and placeholder routing are **In Progress** based on inspected current source and owner-reported lint/build, route fallback, and browser checks on the latest reorganization; the Git checkpoint remains outstanding, and configured social account links are unavailable. Sessions 3–10 remain **Not Started**.
 > **Last reviewed:** 2026-11-15  
 >
 > This report visualizes the planned Phase 1 work. It is not evidence that a session, feature, test, or deployment is complete. Update status only when repository evidence and the session's acceptance criteria support it.
@@ -29,8 +29,8 @@ The four phases above are the **development-series groupings** from the master e
 
 | Session | Execution phase | Planned milestone | Depends on | Status |
 |---|---|---|---|---|
-| 1 | Frontend foundation | Vite React application runs locally and is connected to GitHub | None | In Progress |
-| 2 | Frontend foundation | Responsive shared layout, working routes, and Q&A Coming Soon placeholder | Session 1 | Not Started |
+| 1 | Frontend foundation | Vite React application runs locally and is connected to GitHub | None | Accepted |
+| 2 | Frontend foundation | Responsive shared layout, working routes, and Q&A Coming Soon placeholder | Session 1 | In Progress |
 | 3 | Frontend foundation | Responsive Code Classic homepage matches the approved visual baseline | Session 2 and UI specification | Not Started |
 | 4 | Frontend foundation | Visitors can browse blog listings and detail pages | Sessions 2–3 | Not Started |
 | 5 | Firebase & authentication | Verified email/password and Google sign-in, password reset, and session handling work | Session 1; frontend routes from Session 2 | Not Started |
@@ -73,7 +73,7 @@ The dependency arrows show the planned handoffs, not completed work. Sessions sh
 ### Session 1 — Development Environment and React Application
 
 **Execution phase:** Frontend foundation · **Target recording:** 20–25 minutes  
-**Status:** In Progress · **Depends on:** None
+**Status:** Accepted · **Depends on:** None
 
 **Goal:** Verify the development tools, create the Vite React JavaScript application, understand its generated structure, run it locally, and establish the first GitHub checkpoint.
 
@@ -89,38 +89,75 @@ flowchart LR
 ```
 
 **Expected handoff:** A locally running Vite/React application, a verified repository connection, and a first commit.  
-**Acceptance focus:** Tool versions/configuration are verified; the app starts in a browser; generated files are understood; the GitHub checkpoint succeeds without committing secrets. The shared navigation preserves Q&A as a Coming Soon placeholder only.
+**Acceptance focus:** Tool versions/configuration are verified; the starter app runs locally and builds; the generated project is scaffolded; the GitHub checkpoint succeeds without committing generated dependencies, build output, or secrets. Browser interaction and hot-reload are part of the owner's completed session; hot-reload recording is optional.
 
-**Progress evidence — user-provided terminal output (2026-11-15; not independently run by the report updater):**
+**Completion evidence — owner-confirmed and supplied by the user (2026-11-15):**
 
-- Reported tool output: Node.js `v22.21.0` and npm `11.6.2`. The user's global Git configuration displayed the name Jaydeep Rajput; the global identity configuration alone does not establish a GitHub remote or completed checkpoint.
-- Reported scaffold activity: ran `npm create vite@latest . -- template react` in the existing, non-empty project directory; chose **Ignore files and continue** at the create-vite prompt, then selected React, JavaScript, and ESLint and installed dependencies. The scaffold process automatically started Vite at `http://localhost:5173`.
-- The user separately ran `npm run dev`, which reportedly printed the same URL. This records the dev server as reported running when that terminal output was captured; its current availability and browser rendering have not been independently checked.
-- Reported `npm run build` result: Vite `v8.3.8` completed successfully with 20 modules transformed. This is user-provided build evidence, not a build independently run for this update.
-- Current repository inspection is consistent with a Vite/React starter scaffold (`src/App.jsx`, `src/main.jsx`, Vite configuration and starter dependencies). The current app still displays the starter counter and Vite/React content; this is not evidence that any Code Classic feature is implemented.
+- User terminal output records Node.js `v22.21.0`, npm `11.6.2`, Git identity configuration, the React + JavaScript + ESLint Vite scaffold in the non-empty project directory (choosing **Ignore files and continue**), and successful dependency installation.
+- The scaffold and a separate `npm run dev` invocation both reported Vite ready at `http://localhost:5173`. The owner confirms Session 1 is complete; the assistant did not independently repeat the browser interaction.
+- User terminal output records `npm run build` succeeding with Vite `v8.3.8` and 20 modules transformed.
+- At the time of the Session 1 inspection, the repository source was consistent with a Vite/React starter scaffold. Session 2 has since replaced the active rendered starter view with shared layout and placeholder routes; those later changes do not imply completion of product features beyond their stated placeholder behavior.
+- The supplied GitHub screenshot shows `jaydeeprajputprojects-wq/codeclassic`, branch `feature/project-setup`, a recent push, and latest visible commit `ad4a201` (`feat: initialize React app with Vite, add main components and st...`) with the project tree.
+- **Local Git verification at the Session 1 checkpoint:** the checked-out branch and `origin/feature/project-setup` tracking ref both pointed to `ad4a20173e96828013826fd94c4d566f848f98ec`. `git ls-files` confirmed `node_modules/`, `dist/`, and `.env*` paths were not tracked. The worktree observation from that checkpoint is historical, not a statement of current Git status. A fresh request to GitHub's live remote and browser rendering were not performed by the assistant.
 
-**Remaining Session 1 gate / evidence gaps:** No browser verification or screenshot, GitHub remote/repository connection, first Git commit/checkpoint, or evidence that the generated project structure has been reviewed was provided or verified. The reported tool output does not establish Visual Studio Code availability or a Git version. No lint, automated test, security, or feature acceptance checks are evidenced. Therefore Session 1 remains **In Progress**, not Accepted; only the setup/scaffold, dev-server invocation, and production-build portions have evidence. Do not infer completion of initial app features from the scaffold or build.
+**Acceptance outcome:** The project owner confirms Session 1 is complete. Supplied terminal output covers setup, dependency installation, local server startup, and production build; the GitHub screenshot and matching local refs cover the pushed checkpoint. The assistant did not independently replay browser/HMR checks or query GitHub live. This session establishes only the starter-project foundation; it does not mark any Code Classic product feature or later session complete.
 
 ### Session 2 — Frontend Configuration and Common Layout
 
 **Execution phase:** Frontend foundation · **Target recording:** 20–25 minutes  
-**Status:** Not Started · **Depends on:** Session 1
+**Status:** In Progress · **Depends on:** Session 1
 
-**Goal:** Configure Bootstrap 5 and React Router, establish shared page layout, implement the header, navigation and footer, and verify responsive placeholder routes.
+**Goal:** Follow the owner-supplied Session 2 slide order to configure dependencies and imports, establish the frontend folders and clean starter state, add placeholder pages and routes, implement the responsive shared header/navigation/layout/footer, and verify the build and checkpoint.
 
 ```mermaid
 flowchart LR
-    A["Review generated app<br/>& dependencies"] --> B["Configure Bootstrap<br/>and React Router"]
-    B --> C["Establish entry point,<br/>folders, global styles"]
-    C --> D["Build shared header,<br/>navigation & footer"]
-    D --> E["Add placeholder routes<br/>and responsive behavior"]
-    E --> F{"Routes and layout<br/>verified across widths?"}
-    F -- Yes --> G["PASS → Session 3"]
-    F -- No --> H["BLOCKED → fix layout<br/>or routing"]
+    A["Install dependencies<br/>Bootstrap & React Router"] --> B["Import Bootstrap CSS/JS;<br/>then global styles"]
+    B --> C["Create components/layout,<br/>pages & styles folders"]
+    C --> D["Safely remove starter demo<br/>and obsolete styles"]
+    D --> E["Add Home, Blogs, About<br/>& Q&A placeholders"]
+    E --> F["Configure routes;<br/>two-ribbon shared header"]
+    F --> G["Responsive Bootstrap nav<br/>and mobile hamburger"]
+    G --> H["Shared Layout + Outlet<br/>and Footer"]
+    H --> I["Responsive checks,<br/>build & Git checkpoint"]
+    I --> J{"Acceptance evidence,<br/>stable state & checkpoint?"}
+    J -- Yes --> K["PASS → Session 3"]
+    J -- No --> L["IN PROGRESS / BLOCKED<br/>record remaining gate"]
 ```
 
-**Expected handoff:** A consistent responsive shell and working navigation between placeholder pages.  
-**Acceptance focus:** Shared UI renders on target screen sizes; routes resolve; Q&A opens only a Coming Soon placeholder; no broken navigation or layout overflow remains.
+**Expected handoff:** A responsive shared shell and routes for Home, Blogs (including category path), Q&A Coming Soon, About, and Login. Homepage and blog functionality remain placeholders for later sessions.
+**Acceptance focus:** The required dependency/import/folder/page/route/layout sequence is implemented; Bootstrap styles precede global styles; the two-ribbon header and mobile navigation behave responsively; `<Outlet />` renders child routes and a shared footer; Q&A remains non-functional Coming Soon only; all mandatory responsive/build checks and the Git checkpoint are evidenced before acceptance.
+
+**Required implementation order — owner-supplied slide screenshots:** The sequence below records the requested Session 2 teaching/implementation order. It is not proof of the order in which the current source edits were made.
+
+- **1 — Dependencies:** install Bootstrap and React Router.
+- **2 — Imports:** load Bootstrap CSS and JavaScript, then the global stylesheet after Bootstrap CSS.
+- **3 — Folders and cleanup:** use `src/components/layout/`, `src/pages/`, and `src/styles/`; safely remove the Vite demo and obsolete starter styles.
+- **4 — Placeholder pages:** create distinct Home, Blogs, About, and Q&A Coming Soon pages. Login remains available; category placeholders use the URL category.
+- **5 — Routes and shared header:** configure the pages' routes and two-ribbon header.
+- **6 — Responsive navigation:** use Bootstrap navigation with a mobile hamburger at the top-right.
+- **7 — Shared shell:** place the header and footer around nested route content via `<Outlet />`.
+- **8 — Responsive verification/checkpoint:** perform responsive checks, run the build/checks, and create the Git checkpoint before acceptance.
+
+**Current source evidence — inspected 2026-11-15:**
+
+- `package.json` declares Bootstrap `^5.3.9` and `react-router-dom` `^7.18.5`.
+- `src/main.jsx` imports Bootstrap CSS, Bootstrap's bundle JavaScript, then `src/styles/global.css`; it wraps `App` in `BrowserRouter`.
+- Current source has `src/components/layout/Header.jsx`, `Footer.jsx`, and `Layout.jsx`. `Layout` renders the shared header, `<Outlet />`, and footer.
+- `src/App.jsx` nests routes under `Layout`: `/`, `/blog`, `/blog/:category`, `/qa`, `/about`, `/login`, and a not-found route. The category page reads the URL category. Login remains present.
+- Distinct pages are present at `src/pages/Home.jsx`, `Blogs.jsx`, `About.jsx`, `Login.jsx`, and `QAComingSoon.jsx`. The Q&A page shows a Coming Soon message only.
+- `src/styles/global.css` contains the shared shell and responsive styling. The current `src` listing does not contain the old Vite `App.css`/`index.css` or the previously used generic `PlaceholderPage.jsx`/`SiteLayout.jsx`; safe removal history cannot be independently established without the Git diff.
+- The header implements two ribbons, the mobile hamburger at the top-right, Bootstrap collapse/dropdown behavior, and a Login route. Its YouTube, LinkedIn, and Instagram entries are inert text placeholders with “not configured” titles, not working links. Per the owner, the account URLs are not configured. Do not represent these as functional social links.
+- This is placeholder routing/layout work only, not the Session 3 homepage, Session 4 blog functionality, or later product features.
+
+**Validation and Git evidence — source inspection and parent-reported checks:**
+
+- **Parent-reported automated checks on the latest reorganized source:** `npm run lint` passed and `npm run build` passed. The report updater did not independently run these commands or inspect their terminal output.
+- **Parent-reported direct-route fallback:** requests for `/`, `/blog`, `/blog/java`, `/qa`, `/about`, `/login`, and `/missing-route` returned the app's SPA entry/fallback.
+- **Parent-reported browser checks:** on mobile, the hamburger at the upper-right opens the navigation and the menu closes after selecting Home once the Bootstrap transition completes. At 1280px, the desktop navbar is visible and the mobile toggle is hidden. The Blog dropdown opens, and `/blog/java` displays “Java Blogs”. `/qa` displays the Coming Soon state with zero buttons, inputs, or textareas.
+- **Parent-reported Git state:** `git status -sb` shows branch `feature/session-2` at `ad4a201`, with no upstream marker and modified/untracked local files. The work has not been committed or pushed; the required Git checkpoint remains outstanding. This status came from the parent, not an independent Git query by the report updater.
+- No feature-level automated tests were reported. The checks above cover Session 2 lint/build, route fallback, and specified navigation behavior only; they do not prove later Phase 1 functionality or a production/security gate.
+
+**Remaining Session 2 gate:** Capture/retain the reported validation evidence, obtain and configure the required social account URLs (the current social-name entries are inert placeholders, not functional links), and complete the Git checkpoint. Parent reports that the branch has modified/untracked local work and no commit or push. Do not claim a passing gate until all mandatory acceptance checks, evidence, stable application state, and checkpoint are verified. Session 2 remains **In Progress**; Session 1 remains **Accepted** and Sessions 3–10 remain **Not Started**.
 
 ### Session 3 — Code Classic Homepage
 
@@ -330,3 +367,9 @@ Never defer a security, privacy, or data-integrity issue as a conditional accept
 | 2026-11-14 | Recorded the difference between the summed per-session duration and the master plan's approximate overall recording estimate. |
 | 2026-11-14 | Aligned Phase 1 report with the baseline BRD/TDD/UI decisions: verified-email access, password reset, confirmed admin deletion, Q&A Coming Soon only, and the master plan's Phase 1-only execution scope. |
 | 2026-11-15 | Updated Session 1 to In Progress based on user-provided terminal output for local tools, create-vite scaffolding in a non-empty directory (Ignore files and continue), dependency installation, Vite dev-server output at `http://localhost:5173`, and a successful production build. Distinguished those claims from inspected starter source and recorded the unverified browser, GitHub/checkpoint, and remaining acceptance evidence. No product-feature status or other session status was advanced. |
+| 2026-11-15 | Recorded the user's report and screenshot description of a push to `feature/project-setup` at `ad4a201`, plus matching local branch and `origin` tracking refs/reflog. Clarified that the screenshot was not directly accessible and GitHub's live remote, working-tree cleanliness, and browser rendering were not independently verified. Session 1 remains In Progress because required acceptance evidence is incomplete; no other session status changed. |
+| 2026-11-15 | Marked Session 1 Accepted at the owner's request after their completion confirmation. Recorded the supplied terminal output and GitHub screenshot, matching local branch/tracking refs at `ad4a201`, and verified that build output, dependencies, and environment files are not tracked. Noted that the assistant did not independently repeat browser/HMR checks or query GitHub live. Sessions 2–10 remain Not Started. |
+| 2026-11-15 | Recorded Session 2 as In Progress after implementing the shared responsive layout and placeholder routes. The project owner reported passing lint/build, direct SPA route responses, mobile collapse/dropdown navigation, desktop navigation visibility, and Q&A placeholder-only behavior. The Session 2 Git checkpoint and UI-specified social links remain outstanding; Sessions 3–10 remain Not Started. |
+| 2026-11-15 | Updated Session 2 evidence after inspecting the current router, layout, placeholder, styles, and dependencies. Distinguished inspected source from owner-reported browser, direct-request, lint/build, and diff-check results; recorded that the work remains local and uncommitted/unpushed per the owner, while current Git status was not independently queried. Confirmed the required social icons/links are absent and URLs were not provided. Kept Session 1 Accepted, Sessions 3–10 Not Started, and the ten-session scope and diagrams unchanged. |
+| 2026-11-15 | Refreshed Session 2 against the latest reorganized source and the owner-supplied slide sequence: dependencies/import order, folders and starter cleanup, distinct placeholder pages/routes, two-ribbon responsive header/navigation, shared `<Outlet />` layout/footer, and responsive validation/checkpoint. Inspected current entry point, routes, layout components, pages, stylesheet, and dependencies. The manual-change notes file was present but empty; the supplied slide sequence was recorded as owner-provided direction, not inferred from code history. Replaced stale SiteLayout/PlaceholderPage/index.css evidence with current Header/Footer/Layout and `global.css` paths. Recorded inert social-name placeholders (not functional links) because URLs are not configured. Earlier lint/build passes predate this reorganization; no rerun, final browser evidence, fresh Git diff/status, or checkpoint was available. Session 2 remains In Progress; all other statuses and the ten-session scope remain unchanged. |
+| 2026-11-15 | Follow-up: recorded parent-reported passing `npm run lint` and `npm run build` on the latest reorganized source; direct-route fallback for `/`, `/blog`, `/blog/java`, `/qa`, `/about`, `/login`, and `/missing-route`; and browser checks for mobile hamburger open/close, desktop navbar/mobile-toggle visibility at 1280px, Blog dropdown/category heading, and Q&A Coming Soon with no buttons or form controls. Recorded parent-reported `git status -sb`: `feature/session-2` at `ad4a201`, no upstream marker, modified/untracked local files, no commit/push. Removed trailing whitespace from the Expected handoff line reported by `git diff --check`; parent will rerun the diff check after this edit. Session 2 remains In Progress because the checkpoint and configured social URLs/links remain outstanding. |
