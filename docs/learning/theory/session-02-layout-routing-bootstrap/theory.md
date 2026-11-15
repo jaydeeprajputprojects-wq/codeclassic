@@ -2,7 +2,7 @@
 
 - **Roadmap phase:** Frontend foundation
 - **Prerequisite:** Session 01 — Environment, React, JavaScript, and ESLint
-- **Learning status:** The current Session 2 layout and route placeholders are verified in the repository. The milestone remains **In Progress** in the Phase 1 session report; do not treat successful checks as proof that later product pages are complete. Parent-verified checks on 2026-11-15 are summarized below. The same parent-verified Git snapshot is local, with changes not committed or pushed.
+- **Learning status:** **Complete — owner-accepted.** The owner has marked Session 2 complete, and the Phase 1 session report now records Session 2 as **Accepted per owner direction**. The shared layout and route placeholders are present in the repository. The parent reported passing lint/build checks and the browser observations listed below on 2026-11-15; these are verification evidence for the shared-layout milestone, not proof that later product features work. Git was observed on branch `feature/session-2` at local commit `310d7d1`, with a clean worktree at the time of the check. No upstream was configured, so no remote push is confirmed; this is a local commit only. The owner will supply the actual social account URLs later; adding them is an optional deferred follow-up, not a blocker for Session 2 completion. Later product features remain planned work.
 
 ## Key words for this lesson
 
@@ -141,7 +141,7 @@ The Blog dropdown currently includes All Blogs, Java, Spring Boot, Microservices
 
 The header also uses React **refs** (references to particular page elements) to refer to the mobile navigation and its toggle button. After a navigation choice on a narrow screen, `closeMobileNavigation` checks whether the panel is open and clicks the toggle to close it. Bootstrap's JavaScript bundle is imported in `main.jsx` for collapse and dropdown behavior.
 
-**Social account note:** YouTube, LinkedIn, and Instagram currently appear as plain text spans with “not configured” titles. They are inert name placeholders, not clickable links, and must not be described as live social accounts.
+**Social account note:** YouTube, LinkedIn, and Instagram currently appear as plain text spans with “not configured” titles. They are inert name placeholders, not clickable links, and must not be described as live social accounts. The owner will supply their actual URLs later. Adding those links is an optional deferred follow-up, not a requirement blocking the owner's Session 2 completion decision.
 
 ### 4. What the page components currently show
 
@@ -194,11 +194,11 @@ The parent ran the checks below after the Session 2 changes. They were not rerun
 - **Mobile at 390px:** the hamburger button was visible at the top-right. It opened the menu, and choosing Home closed it after Bootstrap's transition settled. A transition is the short animation while the menu changes state.
 - **Desktop at 1280px:** the desktop navigation was visible and the mobile toggle was hidden.
 - **Blog navigation:** the Blog dropdown opened, and `/blog/java` displayed “Java Blogs”. This is a heading on a placeholder page, not a list of real blog posts.
-- **Social names:** YouTube, LinkedIn, and Instagram were visible as inert placeholders. Their profile URLs remain unconfigured; do not invent or add links.
+- **Social names:** YouTube, LinkedIn, and Instagram were visible as inert placeholders. The owner will supply their actual URLs later; do not invent or add links before then. This is optional deferred follow-up, not a completion blocker.
 - **Q&A:** `/qa` displayed “Q&A Coming Soon” with no buttons, inputs, or textareas. The page remains non-functional, as Phase 1 requires.
-- **Git snapshot:** the parent verified branch `feature/session-2`, HEAD `ad4a201`, no upstream marker, and local modified/untracked files. Session work is not committed or pushed. Do not describe this snapshot as a commit or publication.
+- **Git snapshot:** Git was observed on branch `feature/session-2` at local commit `310d7d1`, with a clean worktree at the time checked. No upstream was configured. This is a local commit only; a remote push is not confirmed.
 
-These lint, build, and browser checks are useful evidence for this milestone, but they do not prove that blog, authentication, community Q&A, or deployment features are complete. No feature-level automated test result is claimed here.
+These lint, build, and browser checks are evidence for the shared-layout and placeholder milestone, but they do not prove that blog, authentication, functional community Q&A, or deployment features are complete. They were not rerun while editing this guide. No feature-level automated test result is claimed here.
 
 ## Common beginner mistakes
 
@@ -210,8 +210,8 @@ These lint, build, and browser checks are useful evidence for this milestone, bu
   Open the matching page component. Current pages are placeholders; the Blog category heading is not a list of blog posts.
 - **Mistake: looking for the mobile menu button in the dark ribbon.**
   The button is in the upper light ribbon. Its target is the collapsible panel in the lower dark ribbon.
-- **Mistake: calling the social names working links.**
-  They are `<span>` placeholders without destinations. The owner has not configured those accounts.
+- **Mistake: calling the social names working links or treating their URLs as a completion blocker.**
+  They are `<span>` placeholders without destinations. The owner will supply the real URLs later; adding them is optional deferred follow-up.
 - **Mistake: deleting a file because it looks like Vite demo content.**
   Search for imports and URL references first. Removing `favicon.svg`, for example, while `index.html` still refers to it can break the browser icon.
 - **Mistake: adding working Q&A because the route exists.**
@@ -237,7 +237,7 @@ These lint, build, and browser checks are useful evidence for this milestone, bu
 - `docs/initial-project-docs/master-execution-plan.md`, Session 2 — frontend foundation milestone; Sessions 3 and 4 follow with the homepage and blog pages.
 - `docs/initial-project-docs/front-end-UI-design-doc.md`, Section 6 — two-ribbon header, navigation, categories, and responsive behavior.
 - `docs/initial-project-docs/brd-docs.md` and `tdd-docs.md` — Phase 1 and technology baseline, including placeholder-only Q&A.
-- `docs/context/project-context.md` — current project structure and the parent-verified lint, build, browser, and Git observations summarized above.
+- `docs/context/project-context.md` — current project structure and earlier project observations. For this update, the owner supplied the current Session 2 completion status and Git check: local commit `310d7d1` on `feature/session-2`, clean worktree at the time checked, no upstream configured, and no confirmed push.
 - `docs/context/manuallchanges.md` — present and empty when inspected; it supplied no additional implementation details.
-- `docs/report/phase-1-session-report.md` — Session 2 is recorded as In Progress.
-- **Verification boundary:** File paths, imports, route structure, placeholder content, and social-name spans were verified by inspecting current source. The listed lint/build, browser, and Git results were independently checked by the parent and are labeled parent-verified; they were not rerun by this learning-guide update. Social profile URLs remain unconfigured. No application code was changed.
+- `docs/report/phase-1-session-report.md` — now records Session 2 as **Accepted per owner direction**. This report status matches the owner-accepted completion described in this guide.
+- **Verification boundary:** File paths, imports, route structure, placeholder content, and social-name spans were verified by inspecting current source. The parent reported that lint/build passed and verified the direct-route behavior, responsive menu, Blog dropdown/category heading, and Q&A Coming Soon page without controls on 2026-11-15; these checks were not rerun while editing these learning files and do not establish that the placeholder pages have full product functionality. Git was observed at local commit `310d7d1` on `feature/session-2`, with a clean worktree at the time checked and no upstream; it is a local commit only, with no confirmed push. The owner will supply social URLs later; they remain optional deferred follow-up. No application code was changed.

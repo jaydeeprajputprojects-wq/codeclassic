@@ -12,7 +12,7 @@ The button is in the upper brand ribbon, while the collapsible navigation is in 
 
 In `Header.jsx`, the button targets `#primaryNavigation`. The lower ribbon has the element with `id="primaryNavigation"`. Bootstrap uses that matching target to open or close the navigation panel on smaller screens. If the ID and target do not match, the button may appear but control nothing.
 
-Parent-verified browser check on 2026-11-15: at 390px the top-right button opened the menu, and choosing Home closed it after Bootstrap's transition settled. At 1280px, the desktop navigation was visible and the mobile toggle was hidden.
+Parent-verified browser check on 2026-11-15: at 390px the top-right button opened the menu, and choosing Home closed it after Bootstrap's transition settled. At 1280px, the desktop navigation was visible and the mobile toggle was hidden. These are recorded checks, not a promise that later code changes or every browser environment will behave identically.
 
 ## 3. What is the difference between selecting a category and seeing category posts?
 
@@ -36,7 +36,7 @@ The child page is inserted into the `<Outlet />` in `Layout.jsx`. If a route wer
 
 No. They are currently text placeholders, not links.
 
-`Header.jsx` renders each name in a `<span>` with a title explaining that the profile is not configured. There is no account URL in those spans. The parent verified that the names are displayed as inert placeholders; the social URLs remain unconfigured, so do not claim these are live social links or invent destinations.
+`Header.jsx` renders each name in a `<span>` with a title explaining that the profile is not configured. There is no account URL in those spans. The parent verified that the names are displayed as inert placeholders. The owner will supply the actual social URLs later; adding them is an optional deferred follow-up, not a blocker to Session 2 completion. Do not claim these are live social links or invent destinations.
 
 ## 7. Is the Home page complete because `/` displays a heading?
 
@@ -76,10 +76,10 @@ The Code Classic stylesheet contains custom rules for the shared shell and can o
 
 The import order is visible in `src/main.jsx`: Bootstrap CSS is imported before `./styles/global.css`. Import order alone does not guarantee that every custom selector wins; selector specificity and other CSS rules also matter. If a style does not appear, inspect the matching selectors and the browser's computed styles.
 
-## 13. What does “In Progress” mean for Session 2?
+## 13. What is Session 2's completion status, and does an unpushed commit undo that?
 
-The shared layout and placeholder routes exist, but the milestone is not represented as fully accepted.
+The owner has marked Session 2 complete, so the learning guide records it as **complete — owner-accepted**. The parent-reported checks support the shared-layout and placeholder milestone; they do not mean the later homepage, blog, authentication, publishing, or functional Q&A features are complete. A local Git commit does not by itself confirm that the work was pushed to GitHub.
 
-The Phase 1 session report records Session 2 as In Progress. The parent verified branch `feature/session-2`, HEAD `ad4a201`, no upstream marker, and local modified/untracked files. Session work is not committed or pushed. Successful lint, build, and browser checks do not change the report status or mean the later homepage, blog, authentication, and publishing features are done.
+The parent reported that `npm run lint` and `npm run build` passed, and verified the direct-route behavior, responsive mobile menu, desktop navbar, Blog dropdown/category heading, and Q&A Coming Soon page without controls on 2026-11-15. These observations are verification evidence, not proof of full product functionality, and were not rerun for this guide update. Git was observed at branch `feature/session-2`, local commit `310d7d1`, with a clean worktree at the time checked. No upstream was configured, so no remote push is confirmed; this is a local commit only. The Phase 1 session report now records Session 2 as **Accepted per owner direction**, matching the owner-accepted completion recorded here. The owner will supply social URLs later; adding them is optional deferred follow-up and does not block completion.
 
-The parent also ran `npm run lint` and `npm run build` successfully on 2026-11-15. These results were not rerun during this learning-guide update, and no feature-level automated test result is claimed here.
+These results were not rerun during this learning-guide update, and no feature-level automated test result is claimed here. Session 2 completion covers the shared layout and placeholder-route milestone; the homepage, blog content, authentication, publishing, and functional Q&A are not thereby complete.

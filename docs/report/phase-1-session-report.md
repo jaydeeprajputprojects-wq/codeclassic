@@ -2,7 +2,7 @@
 
 > **Report type:** Planned session roadmap and acceptance gates  
 > **Baseline source of truth:** [`brd-docs.md`](../initial-project-docs/brd-docs.md), [`tdd-docs.md`](../initial-project-docs/tdd-docs.md), and [`front-end-UI-design-doc.md`](../initial-project-docs/front-end-UI-design-doc.md). The [master execution plan](../initial-project-docs/master-execution-plan.md) sequences BRD Phase 1 into ten sessions.  
-> **Current implementation status:** Session 1 is **Accepted** based on the project owner's completion confirmation, supplied terminal output and GitHub screenshot, and the matching local branch/tracking refs recorded at that time. Session 2 shared layout and placeholder routing are **In Progress** based on inspected current source and owner-reported lint/build, route fallback, and browser checks on the latest reorganization; the Git checkpoint remains outstanding, and configured social account links are unavailable. Sessions 3–10 remain **Not Started**.
+> **Current implementation status:** Session 1 is **Accepted** based on the project owner's completion confirmation, supplied terminal output and GitHub screenshot, and the matching local branch/tracking refs recorded at that time. Session 2 shared layout and placeholder routing are **Accepted per owner direction**: parent-verified checks and the local Git checkpoint are recorded below. Actual social account URLs are an owner-approved optional follow-up, not a blocking acceptance requirement; they are not configured, and no remote push is claimed. Sessions 3–10 remain **Not Started**.
 > **Last reviewed:** 2026-11-15  
 >
 > This report visualizes the planned Phase 1 work. It is not evidence that a session, feature, test, or deployment is complete. Update status only when repository evidence and the session's acceptance criteria support it.
@@ -30,7 +30,7 @@ The four phases above are the **development-series groupings** from the master e
 | Session | Execution phase | Planned milestone | Depends on | Status |
 |---|---|---|---|---|
 | 1 | Frontend foundation | Vite React application runs locally and is connected to GitHub | None | Accepted |
-| 2 | Frontend foundation | Responsive shared layout, working routes, and Q&A Coming Soon placeholder | Session 1 | In Progress |
+| 2 | Frontend foundation | Responsive shared layout, working routes, and Q&A Coming Soon placeholder | Session 1 | Accepted |
 | 3 | Frontend foundation | Responsive Code Classic homepage matches the approved visual baseline | Session 2 and UI specification | Not Started |
 | 4 | Frontend foundation | Visitors can browse blog listings and detail pages | Sessions 2–3 | Not Started |
 | 5 | Firebase & authentication | Verified email/password and Google sign-in, password reset, and session handling work | Session 1; frontend routes from Session 2 | Not Started |
@@ -39,6 +39,8 @@ The four phases above are the **development-series groupings** from the master e
 | 8 | Blog management & publishing | Admin can create, save, reopen, and edit drafts/posts | Session 7 | Not Started |
 | 9 | Blog management & publishing | Admin publishing is integrated with public blog views | Sessions 4, 6, and 8 | Not Started |
 | 10 | Deployment & completion | Application is deployed on Cloudflare Pages and passes production checks | Sessions 1–9 | Not Started |
+
+**Session 2 status note:** Accepted per the owner's explicit direction. The owner has designated actual social account URLs as an optional deferred follow-up; the existing inert social labels are documented below and do not block this session's acceptance. The verified Git checkpoint is local only; remote push status is unverified.
 
 **Status vocabulary**
 
@@ -105,7 +107,7 @@ flowchart LR
 ### Session 2 — Frontend Configuration and Common Layout
 
 **Execution phase:** Frontend foundation · **Target recording:** 20–25 minutes  
-**Status:** In Progress · **Depends on:** Session 1
+**Status:** Accepted per owner direction · **Depends on:** Session 1
 
 **Goal:** Follow the owner-supplied Session 2 slide order to configure dependencies and imports, establish the frontend folders and clean starter state, add placeholder pages and routes, implement the responsive shared header/navigation/layout/footer, and verify the build and checkpoint.
 
@@ -118,14 +120,14 @@ flowchart LR
     E --> F["Configure routes;<br/>two-ribbon shared header"]
     F --> G["Responsive Bootstrap nav<br/>and mobile hamburger"]
     G --> H["Shared Layout + Outlet<br/>and Footer"]
-    H --> I["Responsive checks,<br/>build & Git checkpoint"]
-    I --> J{"Acceptance evidence,<br/>stable state & checkpoint?"}
-    J -- Yes --> K["PASS → Session 3"]
+    H --> I["Responsive checks,<br/>build & local Git checkpoint"]
+    I --> J{"Checks, evidence,<br/>stable state & checkpoint verified?"}
+    J -- Yes --> K["ACCEPTED → Session 3"]
     J -- No --> L["IN PROGRESS / BLOCKED<br/>record remaining gate"]
 ```
 
 **Expected handoff:** A responsive shared shell and routes for Home, Blogs (including category path), Q&A Coming Soon, About, and Login. Homepage and blog functionality remain placeholders for later sessions.
-**Acceptance focus:** The required dependency/import/folder/page/route/layout sequence is implemented; Bootstrap styles precede global styles; the two-ribbon header and mobile navigation behave responsively; `<Outlet />` renders child routes and a shared footer; Q&A remains non-functional Coming Soon only; all mandatory responsive/build checks and the Git checkpoint are evidenced before acceptance.
+**Acceptance focus:** The required dependency/import/folder/page/route/layout sequence is implemented; Bootstrap styles precede global styles; the two-ribbon header and mobile navigation behave responsively; `<Outlet />` renders child routes and a shared footer; Q&A remains non-functional Coming Soon only; mandatory responsive/build checks and the local Git checkpoint are evidenced. Per the owner's explicit direction, actual social account URLs are optional follow-up rather than a blocking acceptance requirement; the current labels remain inert.
 
 **Required implementation order — owner-supplied slide screenshots:** The sequence below records the requested Session 2 teaching/implementation order. It is not proof of the order in which the current source edits were made.
 
@@ -146,7 +148,7 @@ flowchart LR
 - `src/App.jsx` nests routes under `Layout`: `/`, `/blog`, `/blog/:category`, `/qa`, `/about`, `/login`, and a not-found route. The category page reads the URL category. Login remains present.
 - Distinct pages are present at `src/pages/Home.jsx`, `Blogs.jsx`, `About.jsx`, `Login.jsx`, and `QAComingSoon.jsx`. The Q&A page shows a Coming Soon message only.
 - `src/styles/global.css` contains the shared shell and responsive styling. The current `src` listing does not contain the old Vite `App.css`/`index.css` or the previously used generic `PlaceholderPage.jsx`/`SiteLayout.jsx`; safe removal history cannot be independently established without the Git diff.
-- The header implements two ribbons, the mobile hamburger at the top-right, Bootstrap collapse/dropdown behavior, and a Login route. Its YouTube, LinkedIn, and Instagram entries are inert text placeholders with “not configured” titles, not working links. Per the owner, the account URLs are not configured. Do not represent these as functional social links.
+- The header implements two ribbons, the mobile hamburger at the top-right, Bootstrap collapse/dropdown behavior, and a Login route. Its YouTube, LinkedIn, and Instagram entries are inert text placeholders with “not configured” titles, not working links. Per the owner, the account URLs are not configured. The UI specification calls for configured social links; the owner explicitly directed that actual URLs be treated as optional deferred follow-up and not as an acceptance blocker. Do not represent the placeholders as functional social links.
 - This is placeholder routing/layout work only, not the Session 3 homepage, Session 4 blog functionality, or later product features.
 
 **Validation and Git evidence — source inspection and parent-reported checks:**
@@ -154,10 +156,10 @@ flowchart LR
 - **Parent-reported automated checks on the latest reorganized source:** `npm run lint` passed and `npm run build` passed. The report updater did not independently run these commands or inspect their terminal output.
 - **Parent-reported direct-route fallback:** requests for `/`, `/blog`, `/blog/java`, `/qa`, `/about`, `/login`, and `/missing-route` returned the app's SPA entry/fallback.
 - **Parent-reported browser checks:** on mobile, the hamburger at the upper-right opens the navigation and the menu closes after selecting Home once the Bootstrap transition completes. At 1280px, the desktop navbar is visible and the mobile toggle is hidden. The Blog dropdown opens, and `/blog/java` displays “Java Blogs”. `/qa` displays the Coming Soon state with zero buttons, inputs, or textareas.
-- **Parent-reported Git state:** `git status -sb` shows branch `feature/session-2` at `ad4a201`, with no upstream marker and modified/untracked local files. The work has not been committed or pushed; the required Git checkpoint remains outstanding. This status came from the parent, not an independent Git query by the report updater.
+- **User-supplied Git inspection:** branch `feature/session-2` is at `310d7d1` (`feat: integrate Bootstrap for styling and layout, add routing with React Router`), and the worktree was clean when checked. This local commit is the Git checkpoint for Session 2. The branch has no upstream and is not confirmed pushed; this report makes no remote-push claim.
 - No feature-level automated tests were reported. The checks above cover Session 2 lint/build, route fallback, and specified navigation behavior only; they do not prove later Phase 1 functionality or a production/security gate.
 
-**Remaining Session 2 gate:** Capture/retain the reported validation evidence, obtain and configure the required social account URLs (the current social-name entries are inert placeholders, not functional links), and complete the Git checkpoint. Parent reports that the branch has modified/untracked local work and no commit or push. Do not claim a passing gate until all mandatory acceptance checks, evidence, stable application state, and checkpoint are verified. Session 2 remains **In Progress**; Session 1 remains **Accepted** and Sessions 3–10 remain **Not Started**.
+**Acceptance outcome — Accepted per owner direction:** The parent-verified lint/build, route fallback, and specified browser behavior checks, together with the inspected shared layout/routes and the user-supplied clean-worktree Git inspection at local commit `310d7d1`, support acceptance of this Session 2 milestone. This acceptance covers the shared shell, placeholder pages/routes, responsive navigation and Q&A Coming Soon placeholder only; it does not mark the Session 3 homepage, Session 4 blog functionality, or later Phase 1 features complete. Actual social account URLs remain an explicitly owner-approved optional follow-up, not a blocker. The commit is local; no upstream or remote push is confirmed. The updater did not independently rerun the reported commands or browser checks. Session 1 remains **Accepted** and Sessions 3–10 remain **Not Started**.
 
 ### Session 3 — Code Classic Homepage
 
@@ -373,3 +375,4 @@ Never defer a security, privacy, or data-integrity issue as a conditional accept
 | 2026-11-15 | Updated Session 2 evidence after inspecting the current router, layout, placeholder, styles, and dependencies. Distinguished inspected source from owner-reported browser, direct-request, lint/build, and diff-check results; recorded that the work remains local and uncommitted/unpushed per the owner, while current Git status was not independently queried. Confirmed the required social icons/links are absent and URLs were not provided. Kept Session 1 Accepted, Sessions 3–10 Not Started, and the ten-session scope and diagrams unchanged. |
 | 2026-11-15 | Refreshed Session 2 against the latest reorganized source and the owner-supplied slide sequence: dependencies/import order, folders and starter cleanup, distinct placeholder pages/routes, two-ribbon responsive header/navigation, shared `<Outlet />` layout/footer, and responsive validation/checkpoint. Inspected current entry point, routes, layout components, pages, stylesheet, and dependencies. The manual-change notes file was present but empty; the supplied slide sequence was recorded as owner-provided direction, not inferred from code history. Replaced stale SiteLayout/PlaceholderPage/index.css evidence with current Header/Footer/Layout and `global.css` paths. Recorded inert social-name placeholders (not functional links) because URLs are not configured. Earlier lint/build passes predate this reorganization; no rerun, final browser evidence, fresh Git diff/status, or checkpoint was available. Session 2 remains In Progress; all other statuses and the ten-session scope remain unchanged. |
 | 2026-11-15 | Follow-up: recorded parent-reported passing `npm run lint` and `npm run build` on the latest reorganized source; direct-route fallback for `/`, `/blog`, `/blog/java`, `/qa`, `/about`, `/login`, and `/missing-route`; and browser checks for mobile hamburger open/close, desktop navbar/mobile-toggle visibility at 1280px, Blog dropdown/category heading, and Q&A Coming Soon with no buttons or form controls. Recorded parent-reported `git status -sb`: `feature/session-2` at `ad4a201`, no upstream marker, modified/untracked local files, no commit/push. Removed trailing whitespace from the Expected handoff line reported by `git diff --check`; parent will rerun the diff check after this edit. Session 2 remains In Progress because the checkpoint and configured social URLs/links remain outstanding. |
+| 2026-11-15 | Marked Session 2 Accepted per the owner's explicit direction. Recorded the parent-verified lint/build, route fallback, and responsive/browser checks, plus the user-supplied Git inspection showing clean worktree on `feature/session-2` at local commit `310d7d1`. The local commit is the checkpoint; the branch has no upstream and is not confirmed pushed. Recorded actual social account URLs as an owner-approved optional deferred follow-up, not a blocking acceptance requirement, while retaining the transparent note that current social labels are inert and the UI baseline calls for configured links. Session 2 scope remains layout, placeholder routes, responsive navigation, and Q&A Coming Soon only; Sessions 3–10 remain Not Started. No commands or browser checks were rerun by the report updater. |
